@@ -14,13 +14,15 @@ import (
 	"github.com/rwcarlsen/goexif/tiff"
 )
 
+var v = "0.0.0-src"
+
 var c = struct {
 	Files []string `opts:"mode=arg, help=file to view exif info"`
 }{}
 
 func main() {
 	//parse cli
-	opts.New(&c).Parse()
+	opts.New(&c).Version(v).Parse()
 	//view file info
 	for _, fp := range c.Files {
 		if err := view(fp); err != nil {
